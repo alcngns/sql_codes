@@ -1,0 +1,10 @@
+--Write the query that returns the number of addresses of users in each city.
+
+SELECT 
+U.ID, U.NAMESURNAME, C.CITY, COUNT(A.ID) AS N_OF_ADDRESS
+FROM USERS AS U
+JOIN ADDRESS A ON A.USERID = U.ID
+JOIN CITIES C ON C.ID = A.CITYID
+
+GROUP BY U.ID, U.NAMESURNAME, C.CITY
+ORDER BY NAMESURNAME
