@@ -1,0 +1,12 @@
+--Write a query that finds the average shipping time of orders by region and city.
+
+
+SELECT 
+C.CITY,
+AVG(DATEDIFF(HOUR, O.DATE_, I.DATE_)*1.0) AS TESLIMSURESI
+
+FROM ORDERS O
+JOIN INVOICES I ON I.ORDERID = O.ID
+JOIN ADDRESS A ON A.ID = O.ADDRESSID
+JOIN CITIES C ON C.ID = A.CITYID
+GROUP BY C.CITY

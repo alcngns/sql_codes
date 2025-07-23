@@ -1,0 +1,9 @@
+--Write the query that brings up the amount of shopping done by day of the week.
+
+SELECT 
+DATENAME(DW, DATE_) AS GUNADI, 
+ROUND(SUM(TOTALPRICE), 1) AS TOPLAMTUTAR,
+COUNT(ID) AS SIPARISSAYISI
+FROM ORDERS
+GROUP BY DATEPART(DW, DATE_), DATENAME(DW, DATE_)
+ORDER BY DATEPART(DW, DATE_)

@@ -1,0 +1,14 @@
+--Please enter the query that brings up the total sales of products in the detergent, cleaning and food categories by province.
+
+
+
+SELECT 
+C.CITY, I.CATEGORY1, SUM(OD.LINETOTAL) AS TOTALPRICE
+FROM ORDERDETAILS AS OD
+JOIN ITEMS I ON I.ID = OD.ORDERID
+JOIN ORDERS O ON O.ID = OD.ITEMID
+JOIN ADDRESS A ON A.ID = O.ADDRESSID
+JOIN CITIES C ON C.ID = A.CITYID
+WHERE CATEGORY1 IN ('DETERJAN', 'TEMIZLIK', 'GIDA')
+GROUP BY C.CITY, I.CATEGORY1
+ORDER BY 1

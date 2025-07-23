@@ -1,0 +1,14 @@
+--Write the query that returns records where the month of the order date and the month of the invoice date are different.
+
+
+
+SELECT 
+O.ID, O.DATE_ AS SIPARISTARIHI, I.DATE_ AS FATURATARIHI,
+O.TOTALPRICE AS TOPLAMTUTAR,
+DATENAME(MONTH, O.DATE_) AS SIPARIS_AYI,
+DATENAME(MONTH, I.DATE_) AS FATURA_AYI
+FROM ORDERS AS O
+JOIN INVOICES I ON I.ORDERID = O.ID
+WHERE DATENAME(MONTH, O.DATE_) <> DATENAME(MONTH, I.DATE_)
+ORDER BY 1
+
